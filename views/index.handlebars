@@ -1,0 +1,52 @@
+<h1 class="text-center text-danger">Welcome to Burger Palace! <i class="fas fa-hamburger"></i></h1>
+<h5 class="text-center">Place your order below!</h5>
+
+<hr/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <h3 class="text-center">What kind of burger would you like?</h3>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="ca">Order Here:</label>
+                    <input type="text" id="ca" name="name">
+                </div>
+
+                <div class="form-group" name="devoured" value="0">
+                    {{!-- <input type="radio" name="devoured" value="0"> Order!<br>
+                    <input type="radio" name="devoured" value="1" checked> Devoured!<br> --}}
+                    <button type="submit">Add Burger</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<hr/>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <h3 class="text-center text-danger">Your Burger is Ready!</h3>
+                <ul>
+                {{#each burgers}}
+                    {{#unless devoured}}
+                    {{> burgers/burger-block devoured=true}}
+                    {{/unless}}
+                {{/each}}
+                </ul>
+        </div>
+        
+        <div class="col-md-6">
+            <h3 class="text-center text-danger">Devoured Burgers...Num Num Num</h3>
+                <ul>
+                {{#each burgers}}
+                    {{#if devoured}}
+                    {{> burgers/burger-block devoured=false}}
+                    {{/if}}
+                {{/each}}
+                </ul>
+        </div>
+        
+    </div>
+</div>
